@@ -1,7 +1,7 @@
 Margin Razvan Cristian
 
 
-1. 3 Layered architecture + MVVM
+1. 3 Layered architecture + MVC
 
 
 2. DP: Observer + Builder + Chain of responsibility
