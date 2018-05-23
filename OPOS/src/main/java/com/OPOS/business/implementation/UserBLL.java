@@ -1,28 +1,58 @@
 package com.OPOS.business.implementation;
 
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.OPOS.persistence.entity.User;
 import com.OPOS.persistence.repository.UserRepository;
 
-public class UserBLL {
+@Service
+public class UserBLL{
 	
 	@Autowired
 	private UserRepository userRepository;
 	
-	//private User user;
+	public static User SESSION_USER;
 	
-	
-	
-	private User findById(Integer id)
+	public User findById(Integer id)
 	{
 		return userRepository.findById(id).get();
 	}
 	
-	private User findByEmail(String email)
+	
+	public boolean login(String email,String password)
 	{
-		return userRepository.findByEmail(email).get();
+		boolean ok=false;
+		
+		Optional<User> userOptional=userRepository.findByEmail(email);
+		
+		if (!userOptional.isPresent())
+			return ok;
+		
+		User user=userOptional.get();
+		
+		if (user!=null)
+		{
+			if (user.getPassword().equals(password))
+			{
+				ok=true;
+				SESSION_USER=user;
+			}
+		}
+		return ok;
 	}
+	
+	public void save(User user)
+	{
+		userRepository.save(user);
+	}
+
+	
+	
+	
 	
 	
 	

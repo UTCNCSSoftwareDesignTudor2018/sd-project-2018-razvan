@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>OPOS SignUp </title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+
+
+
+<div class="container">
+
+    <div class="row" style="margin-top:20px">
+    	<form th:action="@{http://localhost:8080/home/signUp/create}" method="post">
+    		<input type="text" placeholder="username" name="username" autofocus="autofocus" /> 
+    		<input type="password" placeholder="password" name="password" autofocus="autofocus" /> 
+    		<input type="text" placeholder="name" name="name" autofocus="autofocus" /> 
+    		<input type="submit" value="SignUp" />
+    	</form>
+    </div>
+</div>
+
+
+<p th:if="${signUpValid}" class="error"><font color="green">SignUp successful</font></p>
+
+</body>
+</html>
