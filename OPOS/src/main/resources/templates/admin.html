@@ -10,7 +10,18 @@
 <div class="container">
 
     <div class="starter-template">
-        <h1>Admin page (Spring Security protected)</h1>
+        <h1>Admin page</h1>
+        
+        
+        <form th:action="@{http://localhost:8080/admin/products}" method="get">
+    		<input type="submit" value="View Products" />
+    	</form>
+    	
+    	
+    	<form th:action="@{http://localhost:8080/admin/orders}" method="get">
+    		<input type="submit" value="View Orders" />
+    	</form>
+
 
         
         <form th:action="@{/logout}" method="post">
