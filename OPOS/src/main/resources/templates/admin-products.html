@@ -11,10 +11,41 @@
 
     <div class="starter-template">
         <h1>Products page</h1>
-
+    </div>
+    
+    <div class="row" style="margin-top:20px">
+    	<form th:action="@{http://localhost:8080/admin/updateProducts}" method="post">
+    		<input type="text" placeholder="id" name="id" autofocus="autofocus" /> 
+    		<input type="text" placeholder="name" name="name" autofocus="autofocus" /> 
+    		<input type="text" placeholder="price" name="price" autofocus="autofocus" />
+    		<input type="text" placeholder="stock" name="stock" autofocus="autofocus" />
+    		<input type="submit" value="Save Product" />
+    	</form>
     </div>
 
 </div>
+
+<div class="container">
+	<div th:if="${not #lists.isEmpty(products)}">
+		<h2>Products available</h2>
+		<table class="table table-stripped">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Stock</th>
+			</tr>
+			<tr th:each="product : ${products}">
+				<td th:text="${product.id}"></td>
+				<td th:text="${product.name}"></td>
+				<td th:text="${product.price}"></td>
+				<td th:text="${product.stock}"></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
 
 </body>
 </html>
