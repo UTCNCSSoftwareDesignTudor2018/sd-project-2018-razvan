@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import com.OPOS.business.implementation.UserBLL;
+import com.OPOS.business.validator.EmailValidator;
 import com.OPOS.persistence.entity.User;
 import com.OPOS.persistence.entity.UserType;
 import com.OPOS.persistence.repository.UserRepository;
@@ -68,13 +69,20 @@ public class HomeController {
 		 String password=http.getParameter("password");
 		 String name=http.getParameter("name");
 		 
-		 
-		 User user=new User(UserType.CLIENT,name,username,password);
-		 
-		 userBLL.save(user);
-		 
 		 ModelAndView modelAndView= new ModelAndView("signUp");
-		 modelAndView.addObject("signUpValid", true);	 
+		 if (EmailValidator.isValidEmail(username))
+		 {
+			 User user=new User(UserType.CLIENT,name,username,password);
+			 userBLL.save(user);
+			 modelAndView.addObject("signUpValid", true);
+			 modelAndView.addObject("signUpInvalid", false);
+			 
+		 }else
+		 {
+			 modelAndView.addObject("signUpInvalid", true);
+			 modelAndView.addObject("signUpValid", false);
+		 }
+	 
 		 return modelAndView;
 	 }
 	 
