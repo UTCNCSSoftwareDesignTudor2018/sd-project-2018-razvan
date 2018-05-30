@@ -39,7 +39,7 @@ public class Order {
 	
 	
 	@Enumerated(EnumType.STRING)
-	@Column(length=8)
+	@Column
 	private OrderStatus orderStatus;
 	
 	@Column

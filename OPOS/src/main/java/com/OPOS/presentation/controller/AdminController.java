@@ -1,5 +1,8 @@
 package com.OPOS.presentation.controller;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.OPOS.business.implementation.OrderBLL;
 import com.OPOS.business.implementation.ProductBLL;
 import com.OPOS.business.implementation.UserBLL;
+import com.OPOS.persistence.entity.Order;
+import com.OPOS.persistence.entity.OrderStatus;
 import com.OPOS.persistence.entity.Product;
 import com.OPOS.persistence.entity.UserType;
 
@@ -25,6 +31,10 @@ public class AdminController {
 	@Autowired
 	ProductBLL productBLL;
 	
+	
+	@Autowired
+	OrderBLL orderBLL;
+	
 	@RequestMapping(value="/products",method=RequestMethod.GET)
 	 public ModelAndView viewProducts() {
 		 ModelAndView modelAndView= new ModelAndView("admin-products");
@@ -35,6 +45,7 @@ public class AdminController {
 	@RequestMapping(value="/orders",method=RequestMethod.GET)
 	 public ModelAndView viewOrders() {
 		 ModelAndView modelAndView= new ModelAndView("admin-orders");
+		 modelAndView.addObject("orders",orderBLL.findAllOpen());
 	    return modelAndView;
 	 }
 	
@@ -74,6 +85,32 @@ public class AdminController {
 		 ModelAndView m=new ModelAndView("admin-products");
 		 m.addObject("products", productBLL.findAll());
 		 return m;
+	 }
+	 
+	 @RequestMapping(value="/updateOrder",method=RequestMethod.POST)
+	 public ModelAndView updateOrder(HttpServletRequest http)
+	 {
+		 String confirmed= http.getParameter("confirmed");
+		 String delivered= http.getParameter("delivered");
+		 String id=http.getParameter("id");
+		 
+		 if (!id.equals(""))
+		 {
+			 Order order=orderBLL.findById(Integer.parseInt(id));
+			 if (confirmed!=null)
+			 {
+				order.setOrderStatus(OrderStatus.CONFIRMED);
+			 }else
+			 {
+				 order.setOrderStatus(OrderStatus.DELIVERED);
+				 order.setFinalTime(new Timestamp(System.currentTimeMillis()));
+			 }
+			orderBLL.updateOrderAdmin(order);
+		 }
+		 
+		 ModelAndView modelAndView= new ModelAndView("admin-orders");
+		 modelAndView.addObject("orders", orderBLL.findAllOpen());
+		 return modelAndView;
 	 }
 	
 	

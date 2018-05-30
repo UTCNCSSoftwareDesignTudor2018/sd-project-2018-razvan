@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.OPOS.persistence.entity.Order;
 import com.OPOS.persistence.entity.OrderItem;
+import com.OPOS.persistence.entity.OrderStatus;
 import com.OPOS.persistence.entity.Product;
 import com.OPOS.persistence.entity.User;
 import com.OPOS.persistence.entity.UserType;
@@ -39,13 +40,10 @@ public class OposApplicationTests {
 	@Test
 	public void test() 
 	{	
+		User user=userRepo.findById(1).get();
 		
-		User user=new User(UserType.CLIENT,"razvan","raza@yahoo","pass");
-		
-		userRepo.save(user);
 		
 		Order order= new Order(user);
-		
 		Product p=new Product("asdf", 10, 10);
 		Product p1=new Product("asdf1", 10, 10);
 		

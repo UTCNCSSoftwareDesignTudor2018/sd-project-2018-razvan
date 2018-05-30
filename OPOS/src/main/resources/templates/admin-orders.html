@@ -11,9 +11,41 @@
 
     <div class="starter-template">
         <h1>Orders page</h1>
+        
+        <div class="row" style="margin-top:20px">
+    	<form th:action="@{http://localhost:8080/admin/updateOrder}" method="post">
+    		<input type="text" placeholder="id" name="id" autofocus="autofocus" /> 
+    		<label>Confirmed</label>
+    		<input type="checkbox" placeholder="Confirmed" name="confirmed" autofocus="autofocus" /> 
+    		<label>Delivered</label>
+    		<input type="checkbox" placeholder="Delivered" name="delivered" autofocus="autofocus" /> 
+    		<input type="submit" value="Update Order" />
+    	</form>
+    </div>
 
     </div>
 
+</div>
+
+
+<div class="container">
+	<div th:if="${not #lists.isEmpty(orders)}">
+		<h2>Orders available</h2>
+		<table class="table table-stripped">
+			<tr>
+				<th>Id</th>
+				<th>StartTime</th>
+				<th>TotalPrice</th>
+				<th>OrderStatus</th>
+			</tr>
+			<tr th:each="order : ${orders}">
+				<td th:text="${order.id}"></td>
+				<td th:text="${order.startTime}"></td>
+				<td th:text="${order.totalPrice}"></td>
+				<td th:text="${order.orderStatus}"></td>
+			</tr>
+		</table>
+	</div>
 </div>
 
 </body>
