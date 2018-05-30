@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Menu</h1>
+    </div>
+    
+     <div class="row" style="margin-top:20px">
+    	<form th:action="@{http://localhost:8080/client/viewShoppingCart}" method="get">
+    		<input type="submit" value="Shopping Cart" />
+    	</form>
+    </div> 
+    
+    
+   <div class="row" style="margin-top:20px">
+    	<form th:action="@{http://localhost:8080/client/addToShoppingCart}" method="post">
+    		<input type="text" placeholder="id" name="id" autofocus="autofocus" /> 
+    		<input type="text" placeholder="quantity" name="quantity" autofocus="autofocus" /> 
+    		<input type="submit" value="Add to Cart" />
+    	</form>
+    </div> 
+    
+    <p th:if="${itemAdded}" class="error"><font color="green">Item added</font></p>
+
+</div>
+
+<div class="container">
+	<div th:if="${not #lists.isEmpty(products)}">
+		<h2>Products available</h2>
+		<table class="table table-stripped">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Price</th>
+			</tr>
+			<tr th:each="product : ${products}">
+				<td th:text="${product.id}"></td>
+				<td th:text="${product.name}"></td>
+				<td th:text="${product.price}"></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+
+</body>
+</html>

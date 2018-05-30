@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Order History page</h1>
+    </div>
+
+</div>
+
+
+<div class="container">
+	<div th:if="${not #lists.isEmpty(orders)}">
+		<table class="table table-stripped">
+			<tr>
+				<th>Id</th>
+				<th>StartTime</th>
+				<th>FinalTime</th>
+				<th>TotalPrice</th>
+				<th>OrderStatus</th>
+			</tr>
+			<tr th:each="order : ${orders}">
+				<td th:text="${order.id}"></td>
+				<td th:text="${order.startTime}"></td>
+				<td th:text="${order.finalTime}"></td>
+				<td th:text="${order.totalPrice}"></td>
+				<td th:text="${order.orderStatus}"></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,12 +1,14 @@
 package com.OPOS.business.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.OPOS.business.interfaces.*;
 import com.OPOS.persistence.entity.OrderItem;
 import com.OPOS.persistence.entity.Product;
 import com.OPOS.persistence.repository.OrderItemRepository;
 
+@Service
 public class OrderItemBLL {
 
 	@Autowired
@@ -21,6 +23,9 @@ public class OrderItemBLL {
 	
 	public void saveOrderItem(OrderItem orderItem) {
 		// TODO Auto-generated method stub
+		Product product=orderItem.getProduct();
+		product.setStock(product.getStock()-orderItem.getQuantity());
+		productBLL.save(product);
 		orderItemRepository.save(orderItem);
 	}
 

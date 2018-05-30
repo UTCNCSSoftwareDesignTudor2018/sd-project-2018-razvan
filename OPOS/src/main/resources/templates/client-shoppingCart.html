@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Shopping Cart page</h1>
+    </div>
+
+</div>
+
+
+<div class="row" style="margin-top:20px">
+    	<form th:action="@{http://localhost:8080/client/placeOrder}" method="post">
+    		<input type="submit" value="Place Order" />
+    	</form>
+    </div>
+
+
+<div class="container">
+	<div th:if="${not #lists.isEmpty(orderItems)}">
+		<table class="table table-stripped">
+			<tr>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>ProductName</th>
+			</tr>
+			<tr th:each="orderItem : ${orderItems}">
+				<td th:text="${orderItem.price}"></td>
+				<td th:text="${orderItem.quantity}"></td>
+				<td th:text="${orderItem.product.getName()}"></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+<div class="row">
+	<div th:if="${not #lists.isEmpty(orderItems)}">
+		<label>Total Price: </label>
+		<td th:text="${value}"></td>
+	</div>
+</div>
+
+</body>
+</html>

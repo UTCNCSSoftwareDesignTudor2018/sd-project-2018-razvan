@@ -41,4 +41,24 @@ public class OrderBLL {
 	{
 		orderRepository.save(order);
 	}
+	
+	public List<Order> findAllClosedById(Integer id)
+	{
+		List<Order> orders=orderRepository.findByUserId(id);
+		List<Order> closedOrders=new ArrayList<Order>();
+		
+		for (Order o:orders)
+		{
+			if (o.getOrderStatus().equals(OrderStatus.DELIVERED)||o.getOrderStatus().equals(OrderStatus.CONFIRMED))
+				closedOrders.add(o);
+		}
+		
+		return closedOrders;
+		
+	}
+	
+	public Order save(Order order)
+	{
+		return orderRepository.save(order);
+	}
 }

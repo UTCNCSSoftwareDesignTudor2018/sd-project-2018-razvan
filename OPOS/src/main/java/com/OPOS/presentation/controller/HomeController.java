@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.OPOS.business.implementation.UserBLL;
 import com.OPOS.persistence.entity.User;
 import com.OPOS.persistence.entity.UserType;
+import com.OPOS.persistence.repository.UserRepository;
 
 @Controller
 @RequestMapping(value="/home")
@@ -37,7 +38,8 @@ public class HomeController {
 		 boolean canLogIn= userBLL.login(username, password);
 		 if (canLogIn)
 		 {
-			 if (userBLL.SESSION_USER.getUserType()==UserType.ADMIN)
+			 User user=userBLL.findByEmail(username);
+			 if (user.getUserType().equals(UserType.ADMIN))
 			 {
 				 return new ModelAndView("admin");
 			 }else
