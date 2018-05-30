@@ -2,6 +2,7 @@ package com.OPOS.business.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ import com.OPOS.persistence.entity.OrderStatus;
 import com.OPOS.persistence.repository.OrderRepository;
 
 @Service
-public class OrderBLL {
+public class OrderBLL extends Observable {
 
 	
 	@Autowired
@@ -39,7 +40,10 @@ public class OrderBLL {
 	
 	public void updateOrderAdmin(Order order)
 	{
+		setChanged();
 		orderRepository.save(order);
+		notifyObservers();
+		clearChanged();
 	}
 	
 	public List<Order> findAllClosedById(Integer id)

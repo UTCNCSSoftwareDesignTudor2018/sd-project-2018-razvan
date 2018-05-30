@@ -12,6 +12,8 @@
     <div class="starter-template">
         <h1>User page </h1>
         
+         <p th:if="${ordersChanged}" class="error"><font color="green">Orders Updated</font></p>
+        
         <form th:action="@{http://localhost:8080/client/menu}" method="get">
     		<input type="submit" value="View Menu" />
     	</form>

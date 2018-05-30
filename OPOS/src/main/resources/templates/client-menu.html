@@ -13,6 +13,8 @@
         <h1>Menu</h1>
     </div>
     
+    <p th:if="${ordersChanged}" class="error"><font color="green">Orders Updated</font></p>
+    
      <div class="row" style="margin-top:20px">
     	<form th:action="@{http://localhost:8080/client/viewShoppingCart}" method="get">
     		<input type="submit" value="Shopping Cart" />
