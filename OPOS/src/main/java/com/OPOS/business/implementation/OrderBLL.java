@@ -7,12 +7,13 @@ import java.util.Observable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.OPOS.business.interfaces.OrderBLLInt;
 import com.OPOS.persistence.entity.Order;
 import com.OPOS.persistence.entity.OrderStatus;
 import com.OPOS.persistence.repository.OrderRepository;
 
 @Service
-public class OrderBLL extends Observable {
+public class OrderBLL extends Observable implements OrderBLLInt{
 
 	
 	@Autowired

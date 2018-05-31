@@ -88,6 +88,22 @@ public class AdminController {
 		 return m;
 	 }
 	 
+	 
+	 @RequestMapping(value="/deleteProduct",method=RequestMethod.POST)
+	 public ModelAndView deleteProduct(HttpServletRequest http)
+	 {
+		 String id=http.getParameter("id");
+		 
+		 if (!id.equals(""))
+		 {
+			 productBLL.delete(productBLL.findById(Integer.parseInt(id)));
+		 }
+		 
+		 ModelAndView m=new ModelAndView("admin-products");
+		 m.addObject("products", productBLL.findAll());
+		 return m;
+	 }
+	 
 	 @RequestMapping(value="/updateOrder",method=RequestMethod.POST)
 	 public ModelAndView updateOrder(HttpServletRequest http)
 	 {
@@ -112,6 +128,13 @@ public class AdminController {
 		 ModelAndView modelAndView= new ModelAndView("admin-orders");
 		 modelAndView.addObject("orders", orderBLL.findAllOpen());
 		 return modelAndView;
+	 }
+	 
+	 
+	 @RequestMapping(value="/productToAdmin",method=RequestMethod.GET)
+	 public ModelAndView productToAdmin()
+	 {
+		 return new ModelAndView("admin");
 	 }
 	
 	

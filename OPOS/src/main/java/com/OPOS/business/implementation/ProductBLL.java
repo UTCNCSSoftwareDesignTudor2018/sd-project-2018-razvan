@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.OPOS.business.interfaces.ProductBLLInt;
 import com.OPOS.persistence.entity.Product;
 import com.OPOS.persistence.repository.ProductRepository;
 
 @Service
-public class ProductBLL  {
+public class ProductBLL implements ProductBLLInt  {
 
 	@Autowired
 	private ProductRepository productRepository;

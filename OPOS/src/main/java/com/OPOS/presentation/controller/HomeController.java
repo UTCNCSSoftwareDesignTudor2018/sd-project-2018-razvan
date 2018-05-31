@@ -87,6 +87,20 @@ public class HomeController {
 	 }
 	 
 	 
+	 @RequestMapping(value="/logoutClient",method=RequestMethod.POST)
+	 public ModelAndView logoutClient()
+	 {
+		 UserBLL.SESSION_USER=null;
+		 return new ModelAndView("login-page");
+	 }
+	 
+	 @RequestMapping(value="/logoutAdmin",method=RequestMethod.POST)
+	 public ModelAndView logoutAdmin()
+	 {
+		 UserBLL.SESSION_ADMIN=null;
+		 return new ModelAndView("login-page");
+	 }
+	 
 	 
 	 
 }

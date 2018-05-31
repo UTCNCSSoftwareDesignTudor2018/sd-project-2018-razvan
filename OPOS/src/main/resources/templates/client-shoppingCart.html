@@ -17,9 +17,19 @@
 
 
 <div class="row" style="margin-top:20px">
+
+		<form th:action="@{http://localhost:8080/client/fromCartToMenu}" method="get">
+    		<input type="submit" value="Back" />
+    	</form>
     	<form th:action="@{http://localhost:8080/client/placeOrder}" method="post">
     		<input type="submit" value="Place Order" />
     	</form>
+    	
+    	<form th:action="@{http://localhost:8080/client/removeFromCart}" method="post">
+    		<input type="text" placeholder="id" name="id" autofocus="autofocus" /> 
+    		<input type="submit" value="Delete Product" />
+    	</form>
+    	
     </div>
 
 

@@ -153,6 +153,11 @@ public class Order {
 	{
 		this.orderItems.add(orderItem);
 	}
+	
+	public void removeOrderItem(Integer id)
+	{
+		this.orderItems.remove(id-1);
+	}
 
 
 

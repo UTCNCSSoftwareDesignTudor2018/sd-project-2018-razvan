@@ -9,7 +9,7 @@ import com.OPOS.persistence.entity.Product;
 import com.OPOS.persistence.repository.OrderItemRepository;
 
 @Service
-public class OrderItemBLL {
+public class OrderItemBLL implements OrderItemBLLInt {
 
 	@Autowired
 	OrderItemRepository orderItemRepository;
@@ -18,7 +18,7 @@ public class OrderItemBLL {
 	ProductBLL productBLL;
 	
 	
-	private OrderItem orderItem;
+	//private OrderItem orderItem;
 	
 	
 	public void saveOrderItem(OrderItem orderItem) {
@@ -43,23 +43,23 @@ public class OrderItemBLL {
 	}
 
 
-	public void addProduct(Integer productId,Integer quantity) {
+	//public void addProduct(Integer productId,Integer quantity) {
 		// TODO Auto-generated method stub
-		Product product=productBLL.findById(productId);
-		this.orderItem.setProduct(product);
-		this.orderItem.setQuantity(quantity);
-		this.orderItem.setPrice(product.getPrice()*quantity);
-	}
+		//Product product=productBLL.findById(productId);
+	//	this.orderItem.setProduct(product);
+		//this.orderItem.setQuantity(quantity);
+		//this.orderItem.setPrice(product.getPrice()*quantity);
+	//}
 	
 	
-	public void setContextObject(OrderItem orderItem)
-	{
-		this.orderItem=orderItem;
-	}
+	//public void setContextObject(OrderItem orderItem)
+	//{
+	//	this.orderItem=orderItem;
+	//}
 	
-	public OrderItem getContextObject(OrderItem orderItem)
-	{
-		return this.orderItem;
-	}
+	//public OrderItem getContextObject(OrderItem orderItem)
+	//{
+	//	return this.orderItem;
+	//}
 
 }

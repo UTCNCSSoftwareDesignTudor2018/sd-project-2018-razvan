@@ -13,6 +13,11 @@
         <h1>Orders page</h1>
         
         <div class="row" style="margin-top:20px">
+        
+        <form th:action="@{http://localhost:8080/admin/productToAdmin}" method="get"> 
+    	<input type="submit" value="Back"/>
+    	</form>
+        
     	<form th:action="@{http://localhost:8080/admin/updateOrder}" method="post">
     		<input type="text" placeholder="id" name="id" autofocus="autofocus" /> 
     		<label>Confirmed</label>

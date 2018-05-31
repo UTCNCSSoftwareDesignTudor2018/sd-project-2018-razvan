@@ -14,12 +14,22 @@
     </div>
     
     <div class="row" style="margin-top:20px">
+    <form th:action="@{http://localhost:8080/admin/productToAdmin}" method="get"> 
+    	<input type="submit" value="Back"/>
+    	</form>
+    
+    
     	<form th:action="@{http://localhost:8080/admin/updateProducts}" method="post">
     		<input type="text" placeholder="id" name="id" autofocus="autofocus" /> 
     		<input type="text" placeholder="name" name="name" autofocus="autofocus" /> 
     		<input type="text" placeholder="price" name="price" autofocus="autofocus" />
     		<input type="text" placeholder="stock" name="stock" autofocus="autofocus" />
     		<input type="submit" value="Save Product" />
+    	</form>
+    	
+    	<form th:action="@{http://localhost:8080/admin/deleteProduct}" method="post">
+    	<input type="text" placeholder="id" name="id" autofocus="autofocus" /> 
+    	<input type="submit" value="Delete Product" />
     	</form>
     </div>
 

@@ -62,6 +62,26 @@ public class ClientControlller implements Observer {
 		return modelAndView;
 	}
 	
+	@RequestMapping(value="/removeFromCart",method=RequestMethod.POST)
+	public ModelAndView removeFromCart(HttpServletRequest http)
+	{
+		String id=http.getParameter("id");
+		if (!id.equals(""))
+		{
+			order.removeOrderItem(Integer.parseInt(id));
+		}
+		
+		ModelAndView m=new ModelAndView("client-shoppingCart");
+		m.addObject("orderItems",this.order.getOrderItems());
+		int totalPrice=0;
+		for (OrderItem orderItem:order.getOrderItems())
+			totalPrice+=orderItem.getPrice();
+		m.addObject("value",totalPrice);
+		
+		
+		return m;
+	}
+	
 	@RequestMapping(value="/viewShoppingCart",method=RequestMethod.GET)
 	public ModelAndView viewShoppingCart()
 	{
@@ -92,12 +112,35 @@ public class ClientControlller implements Observer {
 		modelAndView.addObject("ordersChanged", ordersChanged);
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="/orderHistoryToUser",method=RequestMethod.GET)
+	public ModelAndView backToUser()
+	{
+		return new ModelAndView("user");
+	}
+	
+	@RequestMapping(value="/menuToUser",method=RequestMethod.GET)
+	public ModelAndView backFromMenu()
+	{
+		return new ModelAndView("user");
+	}
+	
+	@RequestMapping(value="/fromCartToMenu",method=RequestMethod.GET)
+	public ModelAndView backToMenu()
+	{
+		ModelAndView modelAndView= new ModelAndView("client-menu");
+		 modelAndView.addObject("products", productBLL.findAll());
+		 modelAndView.addObject("ordersChanged", ordersChanged);
+	    return modelAndView;
+	}
 
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		ordersChanged=true;
 	}
+	
+	
 	
 	
 	
