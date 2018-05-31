@@ -8,6 +8,7 @@ Margin Razvan Cristian
 
 
 3. OneToMany: User -> Order ; Order-> OrderItem ; Product -> OrderItem
+
 ManyToOne: Order->User; OrderItem->Order; OrderItem->Product
 
 
