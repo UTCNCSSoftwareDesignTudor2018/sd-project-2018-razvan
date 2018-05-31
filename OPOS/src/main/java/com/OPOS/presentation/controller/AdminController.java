@@ -18,6 +18,7 @@ import com.OPOS.business.implementation.UserBLL;
 import com.OPOS.persistence.entity.Order;
 import com.OPOS.persistence.entity.OrderStatus;
 import com.OPOS.persistence.entity.Product;
+import com.OPOS.persistence.entity.ProductBuilder;
 import com.OPOS.persistence.entity.UserType;
 
 @Controller
@@ -61,7 +62,8 @@ public class AdminController {
 		 
 		 if (id.equals(""))
 		 {
-			 Product product= new Product(name, Integer.parseInt(price), Integer.parseInt(stock));
+			 
+			 Product product= new ProductBuilder().setName(name).setPrice(Integer.parseInt(price)).setStock(Integer.parseInt(stock)).build();
 			 productBLL.save(product);
 		 }else
 		 {

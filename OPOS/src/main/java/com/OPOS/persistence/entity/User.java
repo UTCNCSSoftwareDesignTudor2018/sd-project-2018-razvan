@@ -63,6 +63,18 @@ public class User {
 
 
 
+	public User(UserBuilder userBuilder) {
+		// TODO Auto-generated constructor stub
+		this.userType=userBuilder.userType;
+		this.name=userBuilder.name;
+		this.email=userBuilder.username;
+		this.password=userBuilder.password;
+		this.orders=new ArrayList<Order>();
+	}
+
+
+
+
 	public Integer getId() {
 		return id;
 	}

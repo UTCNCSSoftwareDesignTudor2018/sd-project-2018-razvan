@@ -49,6 +49,13 @@ public class Product {
 		this.orderItems= new ArrayList<OrderItem>();
 	}
 
+	public Product(ProductBuilder productBuilder) {
+		this.name=productBuilder.name;
+		this.price=productBuilder.price;
+		this.stock=productBuilder.stock;
+		this.orderItems=new ArrayList<OrderItem>();
+	}
+
 	public Integer getId() {
 		return id;
 	}
