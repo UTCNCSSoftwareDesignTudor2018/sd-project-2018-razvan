@@ -15,10 +15,7 @@ public class OrderItemBLL implements OrderItemBLLInt {
 	OrderItemRepository orderItemRepository;
 	
 	@Autowired
-	ProductBLL productBLL;
-	
-	
-	//private OrderItem orderItem;
+	ProductBLLInt productBLL;
 	
 	
 	public void saveOrderItem(OrderItem orderItem) {
@@ -41,25 +38,5 @@ public class OrderItemBLL implements OrderItemBLLInt {
 		return orderItemRepository.findById(id).get();
 		
 	}
-
-
-	//public void addProduct(Integer productId,Integer quantity) {
-		// TODO Auto-generated method stub
-		//Product product=productBLL.findById(productId);
-	//	this.orderItem.setProduct(product);
-		//this.orderItem.setQuantity(quantity);
-		//this.orderItem.setPrice(product.getPrice()*quantity);
-	//}
-	
-	
-	//public void setContextObject(OrderItem orderItem)
-	//{
-	//	this.orderItem=orderItem;
-	//}
-	
-	//public OrderItem getContextObject(OrderItem orderItem)
-	//{
-	//	return this.orderItem;
-	//}
 
 }

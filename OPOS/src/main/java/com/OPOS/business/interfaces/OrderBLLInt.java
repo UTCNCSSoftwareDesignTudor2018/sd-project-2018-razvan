@@ -2,8 +2,11 @@ package com.OPOS.business.interfaces;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.OPOS.persistence.entity.Order;
 
+@Service
 public interface OrderBLLInt {
 	
 	public List<Order> findAllOpen();

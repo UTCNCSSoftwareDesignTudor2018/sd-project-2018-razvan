@@ -14,6 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.OPOS.business.implementation.OrderBLL;
 import com.OPOS.business.implementation.ProductBLL;
 import com.OPOS.business.implementation.UserBLL;
+import com.OPOS.business.interfaces.OrderBLLInt;
+import com.OPOS.business.interfaces.ProductBLLInt;
+import com.OPOS.business.interfaces.UserBLLInt;
 import com.OPOS.persistence.entity.Order;
 import com.OPOS.persistence.entity.OrderItem;
 
@@ -23,10 +26,10 @@ public class ClientControlller implements Observer {
 	
 	
 	@Autowired
-	UserBLL userBLL;
+	UserBLLInt userBLL;
 	
 	@Autowired
-	ProductBLL productBLL;
+	ProductBLLInt productBLL;
 	
 	@Autowired
 	OrderBLL orderBLL;

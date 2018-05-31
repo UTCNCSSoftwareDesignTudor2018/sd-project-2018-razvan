@@ -7,6 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.OPOS.business.interfaces.OrderBLLInt;
+import com.OPOS.business.interfaces.OrderItemBLLInt;
 import com.OPOS.business.interfaces.UserBLLInt;
 import com.OPOS.persistence.entity.Order;
 import com.OPOS.persistence.entity.OrderItem;
@@ -22,10 +24,10 @@ public class UserBLL implements UserBLLInt{
 	private UserRepository userRepository;
 	
 	@Autowired
-	private OrderBLL orderBLL;
+	private OrderBLLInt orderBLL;
 	
 	@Autowired
-	private OrderItemBLL orderItemBLL;
+	private OrderItemBLLInt orderItemBLL;
 	
 	
 	@Autowired

@@ -2,9 +2,12 @@ package com.OPOS.business.interfaces;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.OPOS.persistence.entity.Order;
 import com.OPOS.persistence.entity.User;
 
+@Service
 public interface UserBLLInt {
 	
 	public User findById(Integer id);

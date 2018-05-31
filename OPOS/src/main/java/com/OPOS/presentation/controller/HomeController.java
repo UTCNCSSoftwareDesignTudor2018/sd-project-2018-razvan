@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import com.OPOS.business.implementation.UserBLL;
+import com.OPOS.business.interfaces.UserBLLInt;
 import com.OPOS.business.validator.EmailValidator;
 import com.OPOS.persistence.entity.User;
 import com.OPOS.persistence.entity.UserBuilder;
@@ -20,7 +21,7 @@ import com.OPOS.persistence.repository.UserRepository;
 public class HomeController {
 	
 	@Autowired 
-	UserBLL userBLL;
+	UserBLLInt userBLL;
 	
 	
 	
